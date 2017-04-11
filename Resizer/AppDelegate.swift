@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  UIImageResizing
+//  Resizer
 //
 //  Created by Vasyl Pedos on 10.04.17.
 //  Copyright © 2017 Vasyl Pedos. All rights reserved.

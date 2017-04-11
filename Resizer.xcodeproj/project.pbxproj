@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		8F0BA5EB1E9BF78900CE81DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0BA5EA1E9BF78900CE81DA /* AppDelegate.swift */; };
-		8F0BA5ED1E9BF78900CE81DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0BA5EC1E9BF78900CE81DA /* ViewController.swift */; };
 		8F0BA5F01E9BF78900CE81DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0BA5EE1E9BF78900CE81DA /* Main.storyboard */; };
 		8F0BA5F21E9BF78900CE81DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0BA5F11E9BF78900CE81DA /* Assets.xcassets */; };
 		8F0BA5F51E9BF78900CE81DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0BA5F31E9BF78900CE81DA /* LaunchScreen.storyboard */; };
+		8F0BA5FE1E9BF7DA00CE81DA /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0BA5FD1E9BF7DA00CE81DA /* UIImage+Resize.swift */; };
+		8F0BA6001E9C0EBF00CE81DA /* OptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0BA5FF1E9C0EBF00CE81DA /* OptionsTableViewController.swift */; };
+		8F0BA6021E9CE6F600CE81DA /* ResizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0BA6011E9CE6F600CE81DA /* ResizerViewController.swift */; };
+		8F2C6B721E9D296F00C38336 /* Array+SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2C6B711E9D296F00C38336 /* Array+SafeSubscript.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8F0BA5E71E9BF78900CE81DA /* UIImageResizing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIImageResizing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F0BA5E71E9BF78900CE81DA /* Resizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0BA5EA1E9BF78900CE81DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8F0BA5EC1E9BF78900CE81DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8F0BA5EF1E9BF78900CE81DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8F0BA5F11E9BF78900CE81DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F0BA5F41E9BF78900CE81DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F0BA5F61E9BF78900CE81DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F0BA5FD1E9BF7DA00CE81DA /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		8F0BA5FF1E9C0EBF00CE81DA /* OptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTableViewController.swift; sourceTree = "<group>"; };
+		8F0BA6011E9CE6F600CE81DA /* ResizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizerViewController.swift; sourceTree = "<group>"; };
+		8F2C6B711E9D296F00C38336 /* Array+SafeSubscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SafeSubscript.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +44,7 @@
 		8F0BA5DE1E9BF78900CE81DA = {
 			isa = PBXGroup;
 			children = (
-				8F0BA5E91E9BF78900CE81DA /* UIImageResizing */,
+				8F0BA5E91E9BF78900CE81DA /* Resizer */,
 				8F0BA5E81E9BF78900CE81DA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,30 +52,34 @@
 		8F0BA5E81E9BF78900CE81DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8F0BA5E71E9BF78900CE81DA /* UIImageResizing.app */,
+				8F0BA5E71E9BF78900CE81DA /* Resizer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8F0BA5E91E9BF78900CE81DA /* UIImageResizing */ = {
+		8F0BA5E91E9BF78900CE81DA /* Resizer */ = {
 			isa = PBXGroup;
 			children = (
 				8F0BA5EA1E9BF78900CE81DA /* AppDelegate.swift */,
-				8F0BA5EC1E9BF78900CE81DA /* ViewController.swift */,
+				8F0BA6011E9CE6F600CE81DA /* ResizerViewController.swift */,
+				8F0BA5FF1E9C0EBF00CE81DA /* OptionsTableViewController.swift */,
+				8F0BA5FD1E9BF7DA00CE81DA /* UIImage+Resize.swift */,
+				8F2C6B711E9D296F00C38336 /* Array+SafeSubscript.swift */,
 				8F0BA5EE1E9BF78900CE81DA /* Main.storyboard */,
 				8F0BA5F11E9BF78900CE81DA /* Assets.xcassets */,
 				8F0BA5F31E9BF78900CE81DA /* LaunchScreen.storyboard */,
 				8F0BA5F61E9BF78900CE81DA /* Info.plist */,
 			);
-			path = UIImageResizing;
+			name = Resizer;
+			path = Resizer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8F0BA5E61E9BF78900CE81DA /* UIImageResizing */ = {
+		8F0BA5E61E9BF78900CE81DA /* Resizer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8F0BA5F91E9BF78900CE81DA /* Build configuration list for PBXNativeTarget "UIImageResizing" */;
+			buildConfigurationList = 8F0BA5F91E9BF78900CE81DA /* Build configuration list for PBXNativeTarget "Resizer" */;
 			buildPhases = (
 				8F0BA5E31E9BF78900CE81DA /* Sources */,
 				8F0BA5E41E9BF78900CE81DA /* Frameworks */,
@@ -79,9 +89,9 @@
 			);
 			dependencies = (
 			);
-			name = UIImageResizing;
-			productName = UIImageResizing;
-			productReference = 8F0BA5E71E9BF78900CE81DA /* UIImageResizing.app */;
+			name = Resizer;
+			productName = Resizer;
+			productReference = 8F0BA5E71E9BF78900CE81DA /* Resizer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -96,11 +106,12 @@
 				TargetAttributes = {
 					8F0BA5E61E9BF78900CE81DA = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = KFY32PE2QK;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 8F0BA5E21E9BF78900CE81DA /* Build configuration list for PBXProject "UIImageResizing" */;
+			buildConfigurationList = 8F0BA5E21E9BF78900CE81DA /* Build configuration list for PBXProject "Resizer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -113,7 +124,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8F0BA5E61E9BF78900CE81DA /* UIImageResizing */,
+				8F0BA5E61E9BF78900CE81DA /* Resizer */,
 			);
 		};
 /* End PBXProject section */
@@ -136,8 +147,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F0BA5ED1E9BF78900CE81DA /* ViewController.swift in Sources */,
+				8F2C6B721E9D296F00C38336 /* Array+SafeSubscript.swift in Sources */,
+				8F0BA6021E9CE6F600CE81DA /* ResizerViewController.swift in Sources */,
+				8F0BA6001E9C0EBF00CE81DA /* OptionsTableViewController.swift in Sources */,
 				8F0BA5EB1E9BF78900CE81DA /* AppDelegate.swift in Sources */,
+				8F0BA5FE1E9BF7DA00CE81DA /* UIImage+Resize.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +276,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = UIImageResizing/Info.plist;
+				DEVELOPMENT_TEAM = KFY32PE2QK;
+				INFOPLIST_FILE = Resizer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.iKing.UIImageResizing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iKing.Resizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -274,9 +289,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = UIImageResizing/Info.plist;
+				DEVELOPMENT_TEAM = KFY32PE2QK;
+				INFOPLIST_FILE = Resizer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.iKing.UIImageResizing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iKing.Resizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -285,7 +301,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8F0BA5E21E9BF78900CE81DA /* Build configuration list for PBXProject "UIImageResizing" */ = {
+		8F0BA5E21E9BF78900CE81DA /* Build configuration list for PBXProject "Resizer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8F0BA5F71E9BF78900CE81DA /* Debug */,
@@ -294,13 +310,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8F0BA5F91E9BF78900CE81DA /* Build configuration list for PBXNativeTarget "UIImageResizing" */ = {
+		8F0BA5F91E9BF78900CE81DA /* Build configuration list for PBXNativeTarget "Resizer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8F0BA5FA1E9BF78900CE81DA /* Debug */,
 				8F0BA5FB1E9BF78900CE81DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

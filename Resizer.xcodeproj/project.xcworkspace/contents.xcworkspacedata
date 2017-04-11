@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:UIImageResizing.xcodeproj">
+      location = "self:/Users/iKing/Documents/Xcode/Resizer/Resizer.xcodeproj">
    </FileRef>
 </Workspace>
