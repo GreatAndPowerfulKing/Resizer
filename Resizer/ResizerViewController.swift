@@ -10,10 +10,10 @@ import UIKit
 
 class ResizerViewController: UIViewController {
 	
-	var size = CGSize(width: 512, height: 512)
+	var size = CGSize(width: 2048, height: 2048)
 	var options: Options = [.aspectFit, .center]
 	var isAsyncronious = true
-	var color: UIColor = .clear
+	var backgroundColor: UIColor = .clear
 	
 	// MARK: - Outlets
 	
@@ -53,7 +53,7 @@ class ResizerViewController: UIViewController {
 		
 		if let width = defaults.object(forKey: "size.width") as? Float,
 		   let height = defaults.object(forKey: "size.height") as? Float {
-			size = CGSize(width: Int(width), height: Int(height))
+			self.size = CGSize(width: Int(width), height: Int(height))
 		}
 		
 		if let options = defaults.object(forKey: "options") as? Int {
@@ -63,6 +63,10 @@ class ResizerViewController: UIViewController {
 		if let isAsyncronious = defaults.object(forKey: "is_syncronious") as? Bool {
 			self.isAsyncronious = isAsyncronious
 		}
+		
+		if let argb = defaults.object(forKey: "background_color") as? UInt {
+			self.backgroundColor = UIColor(argb: argb)
+		}
 	}
 	
 	@objc private func appWillTerminate(_ notification: Notification) {
@@ -71,12 +75,15 @@ class ResizerViewController: UIViewController {
 		defaults.set(Float(size.height), forKey: "size.height")
 		defaults.set(options.rawValue, forKey: "options")
 		defaults.set(isAsyncronious, forKey: "is_syncronious")
+		defaults.set(backgroundColor.argb, forKey: "background_color")
 		defaults.synchronize()
 	}
 	
 	deinit {
 		NotificationCenter.default.removeObserver(self)
 	}
+	
+	// MARK: - Navigation
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "show.options", let optionsVC = segue.destination as? OptionsTableViewController {
@@ -87,6 +94,8 @@ class ResizerViewController: UIViewController {
 	
 	// MARK: - Image related stuff
 	
+	var originalImage: UIImage?
+	
 	var image: UIImage? {
 		get {
 			return imageView.image
@@ -96,16 +105,18 @@ class ResizerViewController: UIViewController {
 				return
 			}
 			
+			originalImage = image
+			
 			imageView.image = nil
 			
 			if isAsyncronious {
 				spinner.startAnimating()
-				image.resized(to: size, with: options, background: color) { image in
+				image.resized(to: size, with: options, background: backgroundColor) { image in
 					self.spinner.stopAnimating()
 					self.setImage(image)
 				}
 			} else {
-				self.setImage(image.resized(to: size, with: options, background: color))
+				self.setImage(image.resized(to: size, with: options, background: backgroundColor))
 			}
 		}
 	}
@@ -163,6 +174,10 @@ class ResizerViewController: UIViewController {
 		present(alertController, animated: true, completion: nil)
 	}
 	
+	func reload() {
+		image = originalImage
+	}
+	
 	fileprivate func save() {
 		guard let image = image else {
 			return
@@ -209,6 +224,10 @@ class ResizerViewController: UIViewController {
 	
 	@IBAction func load(_ sender: UIBarButtonItem) {
 		load()
+	}
+	
+	@IBAction func reload(_ sender: UIBarButtonItem) {
+		reload()
 	}
 	
 	@IBAction func save(_ sender: UIBarButtonItem) {
@@ -262,6 +281,10 @@ extension ResizerViewController: OptionsControllerDelegate {
 	
 	func update(asyncronious: Bool) {
 		self.isAsyncronious = asyncronious
+	}
+	
+	func update(backgroundColor: UIColor) {
+		self.backgroundColor = backgroundColor
 	}
 }
 

@@ -17,6 +17,7 @@ protocol OptionsControllerDelegate: class {
 	func update(size: CGSize)
 	func update(options: Options)
 	func update(asyncronious: Bool)
+	func update(backgroundColor: UIColor)
 }
 
 // MARK: - OptionsControllerDataSource
@@ -26,6 +27,7 @@ protocol OptionsControllerDataSource: class {
 	var size: CGSize { get }
 	var options: Options { get }
 	var isAsyncronious: Bool { get }
+	var backgroundColor: UIColor { get }
 }
 
 // MARK: - OptionsTableViewController
@@ -62,6 +64,7 @@ class OptionsTableViewController: UITableViewController {
 	@IBOutlet weak var widthTextField: UITextField!
 	@IBOutlet weak var heightTextField: UITextField!
 	@IBOutlet weak var asyncSwitch: UISwitch!
+	@IBOutlet weak var backgroundColorView: UIView!
 	
 	@IBOutlet var optionCells: [OptionCell]!
 	
@@ -100,6 +103,7 @@ class OptionsTableViewController: UITableViewController {
 		asyncSwitch.isOn = dataSource.isAsyncronious
 		widthTextField.text = "\(Int(dataSource.size.width))"
 		heightTextField.text = "\(Int(dataSource.size.height))"
+		backgroundColorView.backgroundColor = dataSource.backgroundColor
 	}
 	
 	@IBAction func asyncSwitched(_ sender: UISwitch) {
@@ -120,12 +124,51 @@ class OptionsTableViewController: UITableViewController {
 		
 		tableView.deselectRow(at: indexPath, animated: true)
 		
+		guard indexPath.section == 1 else {
+			return
+		}
+		
 		if let cell = optionCells[safe: indexPath.row] {
 			cell.isChecked = !cell.isChecked
 			delegate?.update(options: options)
 		}
 	}
+	
+	// MARK: - Navigation
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "modal.colorPicker",
+		   let nvc = segue.destination as? UINavigationController,
+		   let colorVC = nvc.viewControllers.first as? ColorPickerViewController {
+			
+			colorVC.delegate = self
+			colorVC.dataSource = self
+		}
+	}
 
+}
+
+// MARK: - Color picker data source
+
+extension OptionsTableViewController: ColorPickeDataSource {
+	
+	var color: UIColor {
+		return dataSource?.backgroundColor ?? .clear
+	}
+}
+
+// MARK: - Color picker delegate
+
+extension OptionsTableViewController: ColorPickerDelegate {
+	
+	func colorSelected(_ color: UIColor, canceled: Bool) {
+		guard !canceled else {
+			return
+		}
+		
+		delegate?.update(backgroundColor: color)
+		backgroundColorView.backgroundColor = color
+	}
 }
 
 // MARK: - OptionCell
