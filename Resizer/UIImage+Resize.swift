@@ -32,7 +32,7 @@ extension UIImage {
 	
 	- returns: Resized image
 	*/
-	func resized(to size: CGSize, with options: ResizeOptions = [.scale, .center]) -> UIImage? {
+	func resized(to size: CGSize, with options: ResizeOptions = [.scale, .center], background color: UIColor? = nil) -> UIImage? {
 		
 		// Scale mode
 		let imageSize: CGSize
@@ -77,6 +77,11 @@ extension UIImage {
 		
 		let rect = CGRect(origin: CGPoint(x: x, y: y), size: imageSize)
 		UIGraphicsBeginImageContext(size)
+		if let color = color?.cgColor {
+			let context = UIGraphicsGetCurrentContext()
+			context?.setFillColor(color)
+			context?.fill(CGRect(origin: .zero, size: size))
+		}
 		self.draw(in: rect)
 		let resized = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()
@@ -91,9 +96,9 @@ extension UIImage {
 	If `options` are ambiguous, then default `options` will be applied.
 	- parameter callback: Function which is called right after new image was rendered.
 	*/
-	func resized(to size: CGSize, with options: ResizeOptions = [.scale, .center], callback: ((UIImage?) -> ())?) {
+	func resized(to size: CGSize, with options: ResizeOptions = [.scale, .center], background color: UIColor? = nil, callback: ((UIImage?) -> ())?) {
 		DispatchQueue.global(qos: .default).async {
-			let image = self.resized(to: size, with: options)
+			let image = self.resized(to: size, with: options, background: color)
 			DispatchQueue.main.async {
 				callback?(image)
 			}
